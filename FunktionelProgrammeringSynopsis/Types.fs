@@ -1,7 +1,8 @@
 ﻿module Types
 
     // Type configuration of company.
-    type Company(name:string, categories:Set<int>) =
+    type Company(id: int, name:string, categories:Set<int>) =
+        member this.Id = id
         member this.Name = name
         member this.Categories = categories
     

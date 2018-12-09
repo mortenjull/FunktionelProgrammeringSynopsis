@@ -8,26 +8,33 @@ open Logic
 [<EntryPoint>]
 let main argv =       
     printfn "Welcome to Campany Match Making"
-
+    
     //Prints companies from data.
     PrintCompanies Companies
 
-    printfn "Please choose a company by writing its name:"
-    let input = Console.ReadLine()
+    // Ask the user for a company to run match against.
+    let selectedCompany = AskForCompany Companies
 
-    let index = FindCompanyAtIndex(input, Companies)
+    printfn "You have selected: %s" selectedCompany.Name
+    
+    //Gets the seleceted rate.
+    let selectedRate = AskForRate (0.0, 1.0)
 
+    //Gets mathes from MatchMaking
+    let result = MatchMaking (selectedCompany, Companies, selectedRate)
 
-  
-
-    let result = MatchMaking (Companies.Item 0, Companies, 0.5)
-
+    //Prints matches
     PrintMatches result
+    
+    Console.ReadLine()
+    
+    //MatchMakes for all companies in program.
+    let result2 = MatchMakeAllCompanies (Companies, selectedRate)
 
-
+    //Prints matches
+    PrintMatches result2
 
     Console.ReadLine()
-
     0
 
     
