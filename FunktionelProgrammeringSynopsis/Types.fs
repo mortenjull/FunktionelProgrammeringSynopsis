@@ -10,7 +10,7 @@
     type Category(id: int, name: string) = 
         member this.Id = id
         member this.Name = name
-
+    // Type configuration for Match.
     type Match(company1: Company, company2: Company, categories: Set<int>, rate:float) =
         member this.Company1 = company1
         member this.Company2 = company2
